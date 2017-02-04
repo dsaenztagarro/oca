@@ -7,3 +7,11 @@ Exercises for Oracle Certified Associate Java SE Programmer I
 ```
 gradle -Pchapter=chapter1 -PclassName=MyJavaClass runApp
 ```
+
+## Debugging examples
+
+```shell
+export SOURCEPATH="src/main/java"
+export BUILDPATH="build/src/main/java"
+jdb -sourcepath $SOURCEPATH -classpath $BUILDPATH MyJavaClass
+```

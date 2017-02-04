@@ -3,27 +3,28 @@
 final String SOURCEPATH = 'src/main/java'
 final String BUILDPATH  = 'build/src/main/java/'
 
-task preCompile() {
+task beforeCompile() {
     "mkdir -p $BUILDPATH".execute().text
 }
 
 task compile() {
-    def filepath = "$SOURCEPATH/org/dsaenz/oca/$chapter/${className}.java"
-    runCommand "javac -sourcepath $SOURCEPATH -d $BUILDPATH $filepath"
+    def file = "$SOURCEPATH/org/dsaenz/oca/$chapter/${className}.java"
+    runCommand "javac -g -sourcepath $SOURCEPATH -d $BUILDPATH $file"
 }
 
-task runApp() {
-    def classpath = "org.dsaenz.oca.${chapter}.$className"
-    runCommand "java -cp $BUILDPATH $classpath"
+task run() {
+    def klass = "org.dsaenz.oca.${chapter}.$className"
+    runCommand "java -cp $BUILDPATH $klass"
 }
 
-compile.dependsOn preCompile
-runApp.dependsOn compile
+compile.dependsOn beforeCompile
+run.dependsOn compile
 
 def runCommand(command) {
-    def serr = new StringBuilder()
+    def sout = new StringBuilder(), serr = new StringBuilder()
     def proc = command.execute()
-    proc.consumeProcessErrorStream(serr)
+    proc.consumeProcessOutput(sout, serr)
     proc.waitFor()
+    println sout
     println serr
 }
