@@ -1,0 +1,29 @@
+// Live without gradle java plugin
+
+final String SOURCEPATH = 'src/main/java'
+final String BUILDPATH  = 'build/src/main/java/'
+
+task preCompile() {
+    "mkdir -p $BUILDPATH".execute().text
+}
+
+task compile() {
+    def filepath = "$SOURCEPATH/org/dsaenz/oca/$chapter/${className}.java"
+    runCommand "javac -sourcepath $SOURCEPATH -d $BUILDPATH $filepath"
+}
+
+task runApp() {
+    def classpath = "org.dsaenz.oca.${chapter}.$className"
+    runCommand "java -cp $BUILDPATH $classpath"
+}
+
+compile.dependsOn preCompile
+runApp.dependsOn compile
+
+def runCommand(command) {
+    def serr = new StringBuilder()
+    def proc = command.execute()
+    proc.consumeProcessErrorStream(serr)
+    proc.waitFor()
+    println serr
+}
