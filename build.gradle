@@ -1,20 +1,27 @@
 // Live without gradle java plugin
 
-final String SOURCEPATH = 'src/main/java'
-final String BUILDPATH  = 'build/src/main/java/'
+if (!project.hasProperty('chapter') || !project.hasProperty('className')) {
+    def message = '''ERROR: Missing project property
+                    |Usage:
+                    |gradle -Pchapter=<chapterX> -PclassName=<MyJavaClass> <command>'''.stripMargin()
+    throw new InvalidUserDataException(message)
+}
+
+final String SOURCE_PATH = 'src/main/java'
+final String BUILD_PATH  = 'build/src/main/java/'
 
 task beforeCompile() {
-    "mkdir -p $BUILDPATH".execute().text
+    "mkdir -p $BUILD_PATH".execute().text
 }
 
 task compile() {
-    def file = "$SOURCEPATH/org/dsaenz/oca/$chapter/${className}.java"
-    runCommand "javac -g -sourcepath $SOURCEPATH -d $BUILDPATH $file"
+    def file = "$SOURCE_PATH/org/dsaenz/oca/$chapter/${className}.java"
+    runCommand "javac -g -sourcepath $SOURCE_PATH -d $BUILD_PATH $file"
 }
 
 task run() {
     def klass = "org.dsaenz.oca.${chapter}.$className"
-    runCommand "java -cp $BUILDPATH $klass"
+    runCommand "java -cp $BUILD_PATH $klass"
 }
 
 compile.dependsOn beforeCompile
