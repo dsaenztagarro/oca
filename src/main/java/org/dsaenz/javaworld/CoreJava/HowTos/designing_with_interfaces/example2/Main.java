@@ -1,4 +1,4 @@
-package org.dsaenz.javaworld.core_java.howto.designing_with_interfaces.example2;
+package org.dsaenz.javaworld.CoreJava.HowTos.designing_with_interfaces.example2;
 
 // Getting more polymorphism
 public class Main {

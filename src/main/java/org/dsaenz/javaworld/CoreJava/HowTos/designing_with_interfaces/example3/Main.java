@@ -1,4 +1,4 @@
-package org.dsaenz.javaworld.core_java.howto.designing_with_interfaces.example3;
+package org.dsaenz.javaworld.CoreJava.HowTos.designing_with_interfaces.example3;
 
 // The 'burden' of implementation inheritance
 public class Main {
