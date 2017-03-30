@@ -34,8 +34,12 @@ class InitializationOrder extends InitializationOrderParent {
                 // If no super() call is declared in a constructor, Java will
                 // insert a no-argument super() as the first statement of the
                 // constructor
+                //
+                // If parent doesn't define constructor without parameters then
+                // this will not compile
                 this.name = name;
                 Printer.getInstancePrinter(className).print("constructor name", name);
+                ClassMethods obj = new ClassMethods();
         }
 }
 
@@ -50,6 +54,7 @@ class InitializationOrderParent {
 
         {
                 Printer.getInstancePrinter(className).print("count", COUNT);
+                sayHello();
                 Printer.getInstancePrinter(className).print("name", name);
         }
 
@@ -61,6 +66,10 @@ class InitializationOrderParent {
         }
 
         public InitializationOrderParent() {
+                Printer.getInstancePrinter(className).print("constructor name", name);
+        }
+
+        public InitializationOrderParent(String field) {
                 Printer.getInstancePrinter(className).print("constructor name", name);
         }
 }

@@ -17,4 +17,8 @@ public class ClassMethods {
         }
 
         static { Printer.getStaticPrinter(className).print("count", COUNT); }
+
+        public static void sayHello() {
+                System.out.println("Hello world!");
+        }
 }
