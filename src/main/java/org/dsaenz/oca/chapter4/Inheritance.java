@@ -32,6 +32,11 @@ public class Inheritance extends Parent {
                 System.out.println("static: " + i);
         }
 
+        // error: methodFive() in Inheritance cannot override methodFive() in Parent
+        // public void methodFive() {
+        //         System.out.println("five");
+        // }
+
         public static void main(String[] args) {
                 Inheritance obj = new Inheritance();
                 obj.methodOne(1);
@@ -57,6 +62,10 @@ class Parent {
 
         public static void methodFour(int i) {
                 System.out.println("static (parent): " + i);
+        }
+
+        public final void methodFive() {
+                System.out.println("final five");
         }
 }
 
