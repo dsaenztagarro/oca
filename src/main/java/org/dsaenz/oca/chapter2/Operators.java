@@ -23,5 +23,9 @@ public class Operators {
                 System.out.println("casting final int to short: " + m);
                 boolean test = true & false ^ true;
                 System.out.println(test);
+
+                int i = 4;
+                i = i++;
+                System.out.println(i); // 4
         }
 }

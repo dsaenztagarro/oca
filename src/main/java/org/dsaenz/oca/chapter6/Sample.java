@@ -15,12 +15,21 @@ import java.lang.RuntimeException;
  */
 
 public class Sample {
+        // allow to declare all kind of exceptions
+        public void call() throws Error, Exception, RuntimeException {
+                // don't need to raise a declared exception
+                throw new Error();
+        }
+
+        public void otherCall() { throw new RuntimeException(); }
+
+        // error: unreported exception Exception; must be caught or declared to be thrown
+        // public static void main(String[] args) {
         public static void main(String[] args) throws Exception {
                 try {
-                        MyClass obj = new MyClass();
-                        new MyClass().otherMethod(); // COMPILE
-                        obj.myMethod(); // main must declare or catch Exception
-                        obj.otherMethod();
+                        Sample obj = new Sample();
+                        obj.call();
+                        obj.otherCall();
                 } catch (RuntimeException error) {
                         System.out.println("RuntimeException catched!");
                 } catch (Error error) {
@@ -30,15 +39,4 @@ public class Sample {
         }
 }
 
-class MyException extends Exception {
-}
-
-class MyClass {
-        public void myMethod() throws Error, Exception, RuntimeException {
-                throw new Error();
-        }
-
-        public void otherMethod() {
-                throw new RuntimeException();
-        }
-}
+class MyException extends Exception {}

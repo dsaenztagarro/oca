@@ -1,32 +1,32 @@
 package org.dsaenz.oca.chapter5;
 
+import static java.lang.System.out;
+
 public class Interfaces {
         public static void main(String[] args) {
-                new Car().typeNow();
-                CanType.type();
-                // error: cannot assign a value to final variable field
-                // CanType.field = "Myname";
-                System.out.println(CanType.field);
+                RemoteDeveloper r = new RemoteDeveloper();
+                r.now();
         }
 }
-
-class Car implements CanType {
-        private final String name = "Buzz";
-
-        public void typeNow() {
-                System.out.println(name + " is typing");
-        }
+// single inheritance
+class Human {}
+abstract class Developer extends Human implements IsAwesome {}
+class RemoteDeveloper extends Developer {
+        public void now() { System.out.println(THEME); };
+        // attempting to assign weaker access privileges; was public
+        // void now() { System.out.println(THEME); };
 }
 
+// multiple inheritance
+interface IsAwesome extends CanType, CanLearn {
+        String THEME = "Bazinga!";
+        // error: illegal start of type
+        // static { out.println("IsAwesome"); }
+        // { out.println("IsAwesome"); }
+}
 interface CanType {
-        // constant variable! (public static final)
-        String field = "Test";
-
-        static void type() {
-                System.out.println("typing");
-        }
-
-        // error: method type() is already defined in interface CanType
-        // void type();
-        void typeNow();
-}
+        void now();
+        default void type() { out.println("type"); } }
+interface CanLearn {
+        void now();
+        default void learn() { out.println("learn"); } }
