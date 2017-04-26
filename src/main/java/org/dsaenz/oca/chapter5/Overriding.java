@@ -2,6 +2,8 @@ package org.dsaenz.oca.chapter5;
 
 import static java.lang.System.out;
 
+// Remember: variables are SHADOWED and methods are OVERRIDEN
+
 public class Overriding {
 }
 
@@ -12,8 +14,9 @@ class Animal {
         public String run() { return "animal run"; }
 
         public static void main(String[] args) {
-                Animal a = new Dog();
-                Dog dog = (Dog)a;
+                Animal a = new Dog(); // no required cast
+                Dog dog = (Dog)a;     // cast to more specific
+
                 out.println(a.sleep());    // animal sleep
                 out.println(a.dream());    // dog dream
                 out.println(a.walk());     // dog walk; option: animal walk

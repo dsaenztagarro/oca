@@ -11,6 +11,23 @@ import java.lang.RuntimeException;
  *  - Others: throwed by JVM
  * Errors: throwed by JVM
  *
+ * | Exception                      | Type                     | Thrown     |
+ * | ---                            | ---                      | ---        |
+ * | ArithmethicException           | RuntimeException         | JVM        |
+ * | ArrayIndexOutOfBoundsException | RuntimeException         | JVM        |
+ * | ClassCastException             | RuntimeException         | JVM        |
+ * | IllegalArgumentException       | RuntimeException         | Programmer |
+ * | IllegalStateException          | RuntimeException         | Programmer |
+ * | NullPointerException           | RuntimeException         | JVM        |
+ * | NumberFormatException          | IllegalArgumentException | Programmer |
+ * | CloneNotSupportedException     | Exception                | Programmer/JVM |
+ * | java.io.FileNotFoundException  | Exception                | Programmer/JVM |
+ * | java.io.IOException            | Exception                | Programmer/JVM |
+ * | ExceptionInInitializerError    | Error                    | JVM        |
+ * | StackOverflowError             | Error                    | JVM        |
+ * | NoClassDefFoundError           | Error                    | JVM        |
+ *
+ *
  * System.exit(0) skips finally
  */
 

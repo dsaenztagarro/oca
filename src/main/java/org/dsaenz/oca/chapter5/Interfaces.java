@@ -24,7 +24,7 @@ interface IsAwesome extends CanType, CanLearn {
         // static { out.println("IsAwesome"); }
         // { out.println("IsAwesome"); }
 }
-interface CanType {
+abstract interface CanType {
         void now();
         default void type() { out.println("type"); } }
 interface CanLearn {
