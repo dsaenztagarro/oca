@@ -9,6 +9,13 @@ public final class InitializerBlocks {
 }
 
 class Dummy {
+        // A final variable must be initialized when an instance is constructed
+        // or else the code will not compile. This can be done either in an
+        // instance initializer or in EVERY constructor
+        { b = false; }
+
+        private final boolean b;
+
         // error: variable species might not have been initialized
         // static final String species;
         // error: cannot assign a value to final variable species

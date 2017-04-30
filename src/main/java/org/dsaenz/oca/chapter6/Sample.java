@@ -4,6 +4,14 @@ import java.lang.Error;
 import java.lang.Exception;
 import java.lang.RuntimeException;
 
+// Checked conditions: exceptional conditions external to an application that a
+// well written application should anticipate and from which it can recover
+
+// GOOD
+// Exception in thread "main" java.lang.ArrayIndexOutOfBoundException
+// BAD
+// Error in thread "main" java.lang.ArrayIndexOutOfBoundException
+
 /*
  * Checked exceptions: throwed by developer
  * Unchecked exceptions:
@@ -26,7 +34,6 @@ import java.lang.RuntimeException;
  * | ExceptionInInitializerError    | Error                    | JVM        |
  * | StackOverflowError             | Error                    | JVM        |
  * | NoClassDefFoundError           | Error                    | JVM        |
- *
  *
  * System.exit(0) skips finally
  */

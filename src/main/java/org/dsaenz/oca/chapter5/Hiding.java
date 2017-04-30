@@ -1,7 +1,7 @@
 package org.dsaenz.oca.chapter5;
 import static java.lang.System.out;
 
-public class Shadowing {
+public class Hiding /* AKA shadowing */ {
         public static void main(String[] args) {
                 C c = new C();
                 // error: i has private access in B

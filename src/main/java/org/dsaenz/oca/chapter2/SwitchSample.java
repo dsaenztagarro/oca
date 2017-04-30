@@ -36,7 +36,7 @@ public class SwitchSample {
 
                 out.println();
 
-                // integral type
+                // integral type (byte, short, int)
                 // enum
                 // string
                 switch(dayOfWeek) {

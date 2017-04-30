@@ -1,5 +1,9 @@
 package org.dsaenz.oca.chapter2;
 
+// if(false) ... COMPILE
+// while(false) ... NO COMPILE
+//
+
 public class Operators {
         public static void main(String[] args) {
                 System.out.println("byte max value: " + Byte.MAX_VALUE);
